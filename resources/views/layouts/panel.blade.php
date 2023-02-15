@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta name="_token" content="{{ csrf_token() }}" />
 <title>:: Arrow ::</title>
 <link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon">
 <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}" />
@@ -138,7 +139,8 @@
                 <li><a  href="/unidades"> <i class="material-icons">format_shapes</i> <span class="icon-name">Unidades</span> </a></li>
                 <li><a  href="/cargos"> <i class="material-icons">business_center</i> <span class="icon-name">Cargos</span> </a></li>
                 <li><a  href="/asignarcargo"> <i class="material-icons">assignment_ind</i><span>Asignar cargo</span> </a></li>
-                <li><a  href="/firmantes"> <i class="material-icons">border_color</i> <span class="icon-name">Firmantes</span> </a></li>
+                <!-- se quita firmantes de menu para pasarlo como boton en la parte de contrato 
+                    <li><a  href="/firmantes"> <i class="material-icons">border_color</i> <span class="icon-name">Firmantes</span> </a></li>-->
             
                 @elseif ($rol->name=="Responsable de obra")
 
@@ -177,7 +179,13 @@
 <!-- main content -->
 
 <div class="color-bg"></div>
-
+<div class="modal fade" id="dynamic-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body"></div>
+            </div>
+          </div>
+</div>
 <!-- Jquery Core Js -->
 <script src="{{asset('bundles/libscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js -->
 <script src="{{asset('bundles/vendorscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js -->

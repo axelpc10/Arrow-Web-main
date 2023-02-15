@@ -28,6 +28,8 @@ use App\Http\Controllers\AsignarCargoController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\FirmanteController;
+//pdf
+
 
 /*
 |--------------------------------------------------------------------------
@@ -164,7 +166,12 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('financiero/{id}/pdf',[ContratosController::class,'createPDF'])->name('finaciero.createPDF'); 
 	
     Route::get('/avancespdf/{id}/pdf',[AvanceController::class,'createPDFAvance'])->name('avancespdf.createPDFAvance');
-    
+
+    Route::get('/dano', function () {
+        $pdf = PDF::loadView('pruebaparapdf');
+        return $pdf->download('pruebapdf.pdf');
+      });
+
 } );
 
 
