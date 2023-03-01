@@ -145,7 +145,7 @@
 
                                     </div>
                                     <div class="body">
-                                        <form action="{{route('registrar.Avance',$avance->id)}}" method="POST" file=true encytype="multipart/form-data">
+                                        <form action="{{route('registrar.Avance',$avance->id)}}" method="POST" file=true enctype="multipart/form-data">
                                             @csrf
                                         <div class="row clearfix">
                                            

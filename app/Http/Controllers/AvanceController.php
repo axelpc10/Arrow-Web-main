@@ -475,6 +475,7 @@ class AvanceController extends Controller
         $dato->id_avance=$avance->id;
 
 
+
         if($request->hasFile("newimg")){
             $imagen=$request->file("newimg");
             $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();

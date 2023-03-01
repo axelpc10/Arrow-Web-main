@@ -9,6 +9,7 @@ class Dato extends Model
 {
     protected $fillable=[
         
+        'newimg',
         'hombro_derecho1',
         'hombro_derecho2', 
         'hombro_izquierdo1',
@@ -18,10 +19,9 @@ class Dato extends Model
         'anchot',
         'altura', 
         'espesor',
-        'photo' ,
         'pieza',
         'id_concepto',
-        'id_avance',
-        'newimg'   
+        'id_avance'
+           
     ];
 }

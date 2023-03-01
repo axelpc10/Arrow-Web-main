@@ -42,7 +42,7 @@
         
                                         @foreach ($permission as $value)
                                     
-                                            <input type="checkbox" class="form-control filled-in" id="{{ $value->id }}" name="permission[]" value = "{{ $value->id null }}" @if(in_array($value->id, $rolesPermissions) == true) checked @endif>
+                                            <input type="checkbox" class="form-control filled-in" id="{{ $value->id }}" name="permission[]" value = "{{ $value->id, null }}" @if(in_array($value->id, $rolesPermissions) == true) checked @endif>
                                             <label class="form-check-label" for="{{$value->id}}">{{$value->name}} </label>
                                             
                                             <br>

@@ -326,9 +326,8 @@
 
 
 
-                                          <th>
-
-                                          <img class="img-fluid mb-3" src="{{asset('img/usuarios/'.$dato->photo)}}" style="margin: auto; width: auto; height: auto;"><br>
+                                          <th class="text-center">
+                                          <img src="{{asset('img/avance/'.$dato->newimg)}}" class="img-fluid mb-3 img-thumbnail" width="100px"><br>
 
 
                                         </th>
@@ -498,10 +497,9 @@
                                          <?php $est+=$total ?>
                                          @endif
 
-                                         <th>
+                                         <th class="text-center">
 
-                                         <img class="img-fluid mb-3" src="{{asset('img/usuarios/'.$dato->photo)}}" style="margin: auto; width: auto; height: auto;"><br>
-
+                                         <img src="{{asset('img/avance/'.$dato->newimg)}}" class="img-fluid img-thumbnail" width="100px"><br>
 
                                         </th>
                                  
