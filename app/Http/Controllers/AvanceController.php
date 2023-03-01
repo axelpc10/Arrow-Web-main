@@ -49,6 +49,7 @@ class AvanceController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
@@ -473,6 +474,16 @@ class AvanceController extends Controller
         $dato->id_concepto=$avance->id_concepto;
         $dato->id_avance=$avance->id;
 
+
+        if($request->hasFile("newimg")){
+            $imagen=$request->file("newimg");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg=$nombreImagen;
+
+        }
+
         $dato->save();
 
         // return $dato;
@@ -504,6 +515,16 @@ class AvanceController extends Controller
 
         $dato->id_concepto=$avance->id_concepto;
         $dato->id_avance=$avance->id;
+
+
+        if($request->hasFile("newimg")){
+            $imagen=$request->file("newimg");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg=$nombreImagen;
+
+        }
 
         $dato->save();
         

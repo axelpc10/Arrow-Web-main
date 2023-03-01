@@ -18,8 +18,10 @@ class Dato extends Model
         'anchot',
         'altura', 
         'espesor',
+        'photo' ,
         'pieza',
         'id_concepto',
-        'id_avance'   
+        'id_avance',
+        'newimg'   
     ];
 }

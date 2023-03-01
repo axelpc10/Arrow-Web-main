@@ -92,7 +92,7 @@
                                         @if ($an==1)
                                         <th  class="text-center">Ancho 1</th>
                                         <th class="text-center">Ancho 2</th>
-                                        <th  class="text-center" style="background-color: rgb(190, 191, 192)">Ancho Promedio </th>
+                                        <th  class="text-center" style="backg round-color: rgb(190, 191, 192)">Ancho Promedio </th>
                                         @endif
 
                                         {{-- El total cuando solo se tiene el ancho promedio --}}
@@ -170,7 +170,13 @@
                                          @endif
 
 
+                                        <th  class="text-center" style="background-color: rgb(190, 191, 192)">Img</th>
+                                        
                                         <th class="text-center ">OPC</th>
+
+                                        
+                                        
+                                        
                                       
                                     </tr></thead>
                                     <tbody>
@@ -179,8 +185,12 @@
                                         
                                         {{-- Cuerpo de la tabla --}}
                                         @foreach ($datosG as $key=> $dato)
+
+
+                                        
                                           
                                       <td class="text-center bg-info">{{$key}}</td>
+                                      
 
                            
                                         @if ($l==1)
@@ -313,6 +323,15 @@
                                             <th class="text-center"><?php  echo number_format($total, 2, '.', ','); ?></th>
                                             <?php $est+=$total ?>
                                           @endif
+
+
+
+                                          <th>
+
+                                          <img class="img-fluid mb-3" src="{{asset('img/usuarios/'.$dato->photo)}}" style="margin: auto; width: auto; height: auto;"><br>
+
+
+                                        </th>
   
                                     
   
@@ -327,7 +346,8 @@
                                             <button type="submit" style="cursor: pointer; background: transparent; border:0px;"><i class="material-icons text-danger">delete</i></button>
                                           </form>
                                        </th>
-                                      
+
+
 
                                 </tr>
                                 @endforeach
@@ -477,6 +497,13 @@
                                          <th class="text-center"><?php  echo number_format($total, 2, '.', ','); ?></th>
                                          <?php $est+=$total ?>
                                          @endif
+
+                                         <th>
+
+                                         <img class="img-fluid mb-3" src="{{asset('img/usuarios/'.$dato->photo)}}" style="margin: auto; width: auto; height: auto;"><br>
+
+
+                                        </th>
                                  
                                     <th class="text-center  d-flex justify-content-around">
 
@@ -487,6 +514,8 @@
                                          <button type="submit" style="cursor: pointer; background: transparent; border:0px;"><i class="material-icons text-danger">delete</i></button>
                                        </form>
                                     </th>
+                                    
+                                    
                                    
                                    
                                     {{-- inicio --}}
@@ -794,6 +823,7 @@
 
                                    
                                 </table>
+                                
                             </div>
                         </div>
                     </div>  
