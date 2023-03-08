@@ -147,6 +147,7 @@
                 {{-- Responsable de empresa --}}
 
                 <li><a href="/contratosR"> <i class="material-icons">assignment</i><span>Contratos-Asignados</span> </a></li>
+                <li><a href="/reporte"> <i class="">assignment</i><span>reporte</span> </a></li>
                 {{--<li><a  href="/unidades"> <i class="material-icons">format_shapes</i> <span class="icon-name">Unidades</span> </a></li>--}}
 
                 @elseif ($rol->name="Asistente de obra")

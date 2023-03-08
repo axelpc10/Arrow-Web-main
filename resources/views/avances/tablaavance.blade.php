@@ -37,7 +37,7 @@
                     {{-- en el caso de que este amrcado la longitud --}}
                     @if ($l==1)
                     <a href="{{route('registrar.avance',$avance->id)}}"  class="m-auto btn btn-raised btn-warning m-auto">Hombro Derecho</a>   
-                    <a href="{{route('registrar.avanceI',$avance->id)}}"  class="m-auto btn btn-raised btn-warning m-auto">Hombro Izquierdo</a>   
+                    <a href="{{route('registrar.avanceI',$avance->id)}}"  class="m-auto btn btn-raised btn-warning m-auto">Hombro Izquierdo</a>  
                     
                         
                     @else

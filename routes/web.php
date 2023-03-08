@@ -21,6 +21,7 @@ use App\Http\Controllers\ContratosController;
 use App\Http\Controllers\ContratosResponsableController;
 use App\Http\Controllers\FianzaController;
 use App\Http\Controllers\ImagenContratoController;
+use App\Http\Controllers\ReporteController;
 
 use App\Models\Avance;
 
@@ -89,6 +90,9 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('fianza/{id}/crear',[FianzaController::class,'crear'])->name('fianza.crear');
 
     Route::resource('contratosR',ContratosResponsableController::class);
+
+    Route::resource('reporte',ReporteController::class);
+    Route::get('reporte/pdf',[ReporteController::class, 'show'])->name('reporte.show');
 
     Route::resource('codigos',CodigoController::class);
 
