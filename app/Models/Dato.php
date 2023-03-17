@@ -10,6 +10,7 @@ class Dato extends Model
     protected $fillable=[
         
         'newimg',
+        'concepto',
         'hombro_derecho1',
         'hombro_derecho2', 
         'hombro_izquierdo1',

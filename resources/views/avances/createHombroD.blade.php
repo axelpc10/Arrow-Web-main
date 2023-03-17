@@ -275,11 +275,23 @@
                                                         </div>
                                             </div>
                                         <br>
+
+                                        <div class="form-line">
+                                            <strong> concepto </strong>
+                                                 <input type="text" class="form-control" name="concepto" value="{{ old('concepto') }}" required="" placeholder="concepto ">
+                                        </div>
+
+                                        
+
                                        
                                         <div class="col-sm-12">
                                             <center>
                                             <button type="submit" class="btn btn-raised waves-effect g-bg-blush2">Guardar</button>
-                                            <a href="" class="btn btn-raised btn-default waves-effect">Cancelar</a>
+                                            
+                                            <a href="{{ URL::previous() }}" class="btn btn-raised btn-default waves-effect">Cancelar</a>
+
+                                            
+                
                                             </center>
                                         </div>
         

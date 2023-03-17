@@ -46,6 +46,26 @@
 
                    
                 </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="dateInicio">Fecha incio</label>
+                      <input type="date" class="form-control" id="dateInicio" aria-describedby="dateInicio" placeholder="Ingresa una fecha">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="dateFin">Fecha fin</label>
+                      <input type="date" class="form-control" id="dateFin" aria-describedby="dateFin" placeholder="Ingresa una fecha">
+                    </div>
+                  </div>
+                  <div class="col-md-4 d-flex justify-content-center align-items-end">
+                  <a class="btn btn-sm btn-raised btn-primary" href="{{ route('avence.createPDF', $avance->id) }}">Imprimir Reporte<i class="material-icons" style=" margin-bottom: 8px;">file_download</i> </a>
+                  </div>
+                </div>
+
+
                 
                 <div class="body">
                     
@@ -171,6 +191,7 @@
 
 
                                         <th  class="text-center" style="background-color: rgb(190, 191, 192)">Img</th>
+
                                         
                                         <th class="text-center ">OPC</th>
 
@@ -337,14 +358,23 @@
                          
 
                                        <th class="text-center  d-flex justify-content-around">
-
-                                        <a href="{{route('Avance.edit',$dato->id)}}" class="edit"><i class="zmdi zmdi-edit text-warning"></i></a>
+                                        <a href="{{route('Avance.edit',$dato->id)}}" class="edit"><i class="zmdi zmdi-edit"></i></a>
+                                        <a href="{{route('hombrod.showd',$dato->id)}}" class="edit"><i class="zmdi zmdi-eye" ></i></a> 
                                         <form action="{{route('Avance.destroy',$dato->id)}}"   method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" style="cursor: pointer; background: transparent; border:0px;"><i class="material-icons text-danger">delete</i></button>
-                                          </form>
+                                        </form>
+                                        
+                                        
                                        </th>
+                                       <th class="text-center  d-flex justify-content-around">
+                                        
+                                        <a class="btn btn-sm btn-raised btn-primary" href="{{ route('reporte.imprimirpdf',$dato->id) }}"><i class="zmdi zmdi-print" ></i> </a>
+                   
+                                        
+                                       </th>
+
 
 
 
@@ -505,12 +535,21 @@
                                  
                                     <th class="text-center  d-flex justify-content-around">
 
-                                     <a href="{{route('editar.izquierdo',$dato->id)}}" class="edit"><i class="zmdi zmdi-edit text-warning"></i></a>
+                                     <a href="{{route('editar.izquierdo',$dato->id)}}" class="edit"><i class="zmdi zmdi-edit"></i></a>
+                                        <a href="{{route('hombroI.showi',$dato->id)}}" class="edit"><i class="zmdi zmdi-eye" ></i></a>
+                                        
                                      <form action="{{route('Avance.destroy',$dato->id)}}"   method="post">
                                          @csrf
                                          @method('DELETE')
                                          <button type="submit" style="cursor: pointer; background: transparent; border:0px;"><i class="material-icons text-danger">delete</i></button>
                                        </form>
+                                       
+                                    </th>
+                                    <th class="text-center  d-flex justify-content-around">
+
+                                    
+                                       <a class="btn btn-sm btn-raised btn-primary" href="{{ route('reporte.imprimirpdf',$dato->id) }}"><i class="zmdi zmdi-print" ></i> </a>
+                   
                                     </th>
                                     
                                     

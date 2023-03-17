@@ -12,6 +12,8 @@ use App\Models\imgConceptos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use PhpParser\Node\Stmt\Return_;
 use Barryvdh\DomPDF\Facade as PDF;
 use Dompdf\Dompdf;
@@ -156,6 +158,92 @@ class AvanceController extends Controller
         return view('avances.editaravance',compact('l','ap','an','vt','are','al','es','pie','avance','dato'));
     }
 
+    public function showd($id)
+    {
+     
+      //Datos de mi avance
+        $dato=Dato::find($id);
+
+        // return $dato;
+
+    //Opciones seleccionadas de mi formulario
+    $avance=Avance::where('id','=',$dato->id_avance)->first();
+
+    // return $avance;
+    $l=$avance->localizacion;
+    $ap=$avance->anchoM;
+    $an=$avance->anchoP;
+    $vt=$avance->volumenT;
+    $are=$avance->area;
+    $al=$avance->altura;
+    $es=$avance->espesor;
+    $pie=$avance->pieza;
+
+    //$showd=PDF::loadView('avances.veravance',['l'=>$l,'ap'=>$ap,'an'=>$an,'vt'=>$vt,'are'=>$are,'al'=>$al,'es'=>$es,'pie'=>$pie,'avance'=>$avance,'dato'=>$dato]);
+
+    //$showd->setPaper('A4', 'landscape');
+
+    //return $showd->stream('');
+
+    return view('avances.veravance',compact('l','ap','an','vt','are','al','es','pie','avance','dato'));
+    }
+
+    /*
+    public function PDFHD($id)
+    {
+     
+      //Datos de mi avance
+        $dato=Dato::find($id);
+
+        // return $dato;
+
+    //Opciones seleccionadas de mi formulario
+    $avance=Avance::where('id','=',$dato->id_avance)->first();
+
+    // return $avance;
+    $l=$avance->localizacion;
+    $ap=$avance->anchoM;
+    $an=$avance->anchoP;
+    $vt=$avance->volumenT;
+    $are=$avance->area;
+    $al=$avance->altura;
+    $es=$avance->espesor;
+    $pie=$avance->pieza;
+
+    $PDFHD=PDF::loadView('avances.pdfhd',compact('l','ap','an','vt','are','al','es','pie','avance','dato'));
+    
+
+      $PDFHD->setPaper('A4', 'landscape');
+
+      return $PDFHD->stream('REPORTE.pdf');
+
+        //return view('avances.pdfhd',compact('l','ap','an','vt','are','al','es','pie','avance','dato'));
+    }
+    */
+
+    public function showi($id){
+        
+        //Datos de mi avance
+        $dato=Dato::find($id);
+  
+    //Opciones seleccionadas de mi formulario
+    $avance=Avance::where('id','=',$dato->id_avance)->first();
+  
+    // return $avance;
+    $l=$avance->localizacion;
+    $ap=$avance->anchoM;
+    $an=$avance->anchoP;
+    $vt=$avance->volumenT;
+    $are=$avance->area;
+    $al=$avance->altura;
+    $es=$avance->espesor;
+    $pie=$avance->pieza;
+  
+        return view('avances.veravanceI',compact('l','ap','an','vt','are','al','es','pie','avance','dato'));
+  
+  
+      }
+
     /**
      * Update the specified resource in storage.
      *
@@ -173,11 +261,30 @@ class AvanceController extends Controller
         if($dato->hombro_derecho1==null  && $dato->hombro_derecho2==null){
             $dato->hombro_izquierdo1=$request->hombro_izquierdo1;
             $dato->hombro_izquierdo2=$request->hombro_izquierdo2;
+            $dato->concepto=$request->concepto;
 
         }else{
             $dato->hombro_derecho1=$request->hombro_derecho1;
             $dato->hombro_derecho2=$request->hombro_derecho2;
+            $dato->concepto=$request->concepto;
       
+        }
+
+        //return File::delete(app_path().'/img/avance/'.$dato->newimg);
+            
+        if($request->hasFile("newimg")){
+            
+            //Storage::delete('img/avance/'.$dato->newimg);
+            //File::delete(app_path().'/img/avance/'.$dato->newimg);
+            //$filedeleted = unlink(app_path().'img/avance/'.$dato->newimg);
+            File::delete(public_path('img/avance/'.$dato->newimg));
+
+            $imagen=$request->file("newimg");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg=$nombreImagen;
+
         }
         
         $avance=Avance::where('id','=',$dato->id_avance)->first();
@@ -462,6 +569,7 @@ class AvanceController extends Controller
 
         $dato->hombro_derecho1=$request->hombro_derecho1;
         $dato->hombro_derecho2=$request->hombro_derecho2;
+        $dato->concepto=$request->concepto;
     
         $dato->ancho1=$request->ancho1;
         $dato->ancho2=$request->ancho2;
@@ -504,6 +612,7 @@ class AvanceController extends Controller
 
         $dato->hombro_izquierdo1=$request->hombro_izquierdo1;
         $dato->hombro_izquierdo2=$request->hombro_izquierdo2 ;
+        $dato->concepto=$request->concepto;
         
         // return $request->all();
         $dato->ancho1=$request->ancho1;
@@ -514,7 +623,7 @@ class AvanceController extends Controller
         $dato->pieza=$request->pieza;
         $dato->espesor=$request->espesor;
 
-        $dato->id_concepto=$avance->id_concepto;
+            $dato->id_concepto=$avance->id_concepto;
         $dato->id_avance=$avance->id;
 
 
@@ -592,6 +701,8 @@ class AvanceController extends Controller
             $img->imagen='sinimg.png';
             $conceptosimg[2]=$img;
          }
+
+         
          
     $conceptopp=Concepto::where('id','=',$conceptop->id_codigo)->first();
     $conceptoppp=Concepto::where('id','=',$conceptopp->id_codigo)->first();
@@ -950,6 +1061,21 @@ class AvanceController extends Controller
     
         }else{
             unset($imagen['imagen']);
+        }
+
+        if($request->hasFile("imagen")){
+            
+            //Storage::delete('img/avance/'.$dato->newimg);
+            //File::delete(app_path().'/img/avance/'.$dato->newimg);
+            //$filedeleted = unlink(app_path().'img/avance/'.$dato->newimg);
+            File::delete(public_path('img/avance/'.$img->imagen));
+
+            $imagen=$request->file("imagen");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $img->imagen=$nombreImagen;
+
         }
 
         $img->id_avance=$request->id_avance;

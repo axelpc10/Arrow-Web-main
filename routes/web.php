@@ -91,8 +91,9 @@ Route::group(['middleware' => ['auth']], function (){
 
     Route::resource('contratosR',ContratosResponsableController::class);
 
-    Route::resource('reporte',ReporteController::class);
-    Route::get('reporte/pdf',[ReporteController::class, 'show'])->name('reporte.show');
+    Route::get('reporte/{id}/pdf',[ReporteController::class, 'imprimirpdf'])->name('reporte.imprimirpdf');
+    //Route::get('/avance/{id}/pdf',[AvanceController::class,'createPDF'])->name('avence.createPDF');
+    //Route::get('verhombrod/{id}/ver',[AvanceController::class,'showd'])->name('hombrod.showd');
 
     Route::resource('codigos',CodigoController::class);
 
@@ -138,6 +139,8 @@ Route::group(['middleware' => ['auth']], function (){
 
     Route::get('editarHombro/{id}/concepto',[AvanceController::class,'editarIz'])->name('editar.izquierdo');
 
+    Route::get('verhombrod/{id}/ver',[AvanceController::class,'showd'])->name('hombrod.showd');
+    Route::get('verhombroI/{id}/verI',[AvanceController::class,'showi'])->name('hombroI.showi');
 
     Route::get('/avance/{id}/pdf',[AvanceController::class,'createPDF'])->name('avence.createPDF');
     Route::get('/concepto/{id}/pdf',[AvanceController::class,'create2PDF'])->name('concepto.createPDF');
@@ -171,10 +174,7 @@ Route::group(['middleware' => ['auth']], function (){
 	
     Route::get('/avancespdf/{id}/pdf',[AvanceController::class,'createPDFAvance'])->name('avancespdf.createPDFAvance');
 
-    Route::get('/dano', function () {
-        $pdf = PDF::loadView('pruebaparapdf');
-        return $pdf->download('pruebapdf.pdf');
-      });
+    
 
 } );
 

@@ -354,10 +354,14 @@
 
 
                                         <th class="text-center">
-
-                                          <img src="/images/student/random-avatar1.jpg" class="card-img-top"/>
-
-
+                                          <?php
+                                           $path = public_path(); //Ruta absoluta
+                                           $pathImg = '/img/avance/'; //Ruta a sus imagenes
+                                           $img = $dato->newimg; //Imagen de DB
+                                           $finallyPath = $path.$pathImg.$img;//Ruta final de la imagen
+                                           echo '<img src="'.$finallyPath.'" class="card-img-top" width="100px"/>'
+                                          ?>
+                                          
                                         </th>
                                     
   
@@ -526,10 +530,14 @@
                                          @endif
 
                                          <th class="text-center">
-
-                                          <img src="/images/student/random-avatar3.jpg" class="card-img-top"/>
-
-
+                                          <?php
+                                           $path = public_path(); //Ruta absoluta
+                                           $pathImg = '/img/avance/'; //Ruta a sus imagenes
+                                           $img = $dato->newimg; //Imagen de DB
+                                           $finallyPath = $path.$pathImg.$img;//Ruta final de la imagen
+                                           echo '<img src="'.$finallyPath.'" class="card-img-top" width="100px"/>'
+                                          ?>
+                                          
                                         </th>
                                  
                                     <!-- <th class="text-center  d-flex justify-content-around">
@@ -869,7 +877,7 @@
     </div>
 
 
-</div>
+ </div>
     
 
 
