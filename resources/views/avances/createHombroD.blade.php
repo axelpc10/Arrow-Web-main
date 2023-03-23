@@ -260,12 +260,12 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <strong> Foto </strong>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                                                    <img id="newimg" style="max-height: 200px;">
+                                                    <img id="newimg2" style="max-height: 200px;">
                                                 </div>
                                                 
                                                     {{-- <input type="file" name="newimg" id="newimg" accept="image/*" /> --}}
                                                     <div class="container-input">
-                                                        <input type="file"  name="newimg" accept="image/*" id="file-5" class="inputfile inputfile-5" data-multiple-caption="{count} archivos seleccionados"  />
+                                                        <input type="file"  name="newimg" id="newimg" accept="image/*" id="file-5" class="inputfile inputfile-5" data-multiple-caption="{count} archivos seleccionados"  />
                                                         <label for="file-5">
                                                         <figure>
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
@@ -275,6 +275,26 @@
                                                         </div>
                                             </div>
                                         <br>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <strong> tomar foto </strong>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                                                <body>
+                                                        <video id="video"></video>
+                                                        <canvas id="canvas" style="display:none;"></canvas>
+                                                        <div id="buttoncontent">
+  
+
+                                                        <a id="startbutton" class="btn btn-raised btn-default waves-effect">CAPTURE</a>
+                                                        </body>
+
+
+                                                </div>
+                                                
+                                            </div>
+                                        <br>
+
+
 
                                         <div class="form-line">
                                             <strong> concepto </strong>
@@ -310,6 +330,100 @@
 
 @endsection
 @section('scripts')
+
+<script type="text/javascript">
+	(function() {
+
+  var streaming = false,
+    video = document.querySelector('#video'),
+    canvas = document.querySelector('#canvas'),
+    buttoncontent = document.querySelector('#buttoncontent'),
+    photo = document.querySelector('#newimg'),
+    photo2 = document.querySelector('#newimg2'),
+    startbutton = document.querySelector('#startbutton'),
+    width = 320,
+    height = 320;
+
+  navigator.getMedia = (navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.msGetUserMedia);
+
+  navigator.getMedia({
+      video: true,
+      audio: false
+    },
+    function(stream) {
+      if (navigator.mozGetUserMedia) {
+        video.mozSrcObject = stream;
+      } else {
+        var vendorURL = window.URL || window.webkitURL;
+        /*video.src = vendorURL.createObjectURL(stream);*/
+        video.srcObject=stream;
+		video.play();
+      }
+      video.play();
+    },
+    function(err) {
+      console.log("An error occured! " + err);
+    }
+  );
+
+  video.addEventListener('canplay', function(ev) {
+    if (!streaming) {
+      height = video.videoHeight / (video.videoWidth / width);
+      video.setAttribute('width', width);
+      video.setAttribute('height', height);
+      canvas.setAttribute('width', width);
+      canvas.setAttribute('height', height);
+      streaming = true;
+    }
+  }, false);
+
+  function takepicture() {
+  	video.style.display = "none";
+    canvas.style.display = "block";
+    startbutton.innerText= "RETAKE";
+  	canvas.width = width;
+    canvas.height = height;
+    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+
+    // DATAURL: Actual image generation via data url
+    var target = new Image();
+    target.src = canvas.toDataURL();
+    canvas.toBlob( (blob) => {
+  const file = new File( [ blob ], "mycanvas.jpg" );
+  const dT = new DataTransfer();
+  dT.items.add( file );
+  photo.files = dT.files;
+  photo2.setAttribute('src', canvas.toDataURL());
+} );
+
+    
+    //var data = newimg.toDataURL("Dato.php");
+    //console.log(target);
+
+  }
+
+  startbutton.addEventListener('click', function(ev) {
+  	if(startbutton.innerText==="CAPTURE")
+    {
+    	takepicture();
+    }
+    else
+    {
+    	video.style.display = "block";
+    	canvas.style.display = "none";
+      startbutton.innerText= "CAPTURE";
+    }
+    ev.preventDefault();
+  }, false);
+
+})();
+
+</script>
+
+
     <script src="{{asset('plugins/dropzone/dropzone.js')}}"></script>
 
     {{-- <script>

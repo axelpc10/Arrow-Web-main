@@ -122,8 +122,7 @@
                             <a href="javascript:window.print()" class="btn btn-raised btn-success m-auto"  ><i class="zmdi zmdi-print"></i></a>
                             <!--se elimina el boton de editar y se coloca abajo-->
                             <a class="btn btn-sm btn-raised btn-primary m-auto mt-5"  href="{{route('finaciero.createPDF',$contratoUnion->contrato_id)}}">Reporte Finaciero <i class="material-icons" style=" margin-bottom: 8px;">file_download</i> </a>
-                            <a href="dano" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sn" >
-                                <i class="fas fa-print fa-sn text-white-50"> </i> PDF
+                            
                             </a>
                         
                             
