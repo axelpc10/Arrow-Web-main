@@ -102,6 +102,7 @@
    fill: #fff;
 }
 
+
 </style>
 
 @endsection
@@ -145,7 +146,7 @@
 
                                     </div>
                                     <div class="body">
-                                        <form action="{{route('registrar.Avance',$avance->id)}}" method="POST" file=true enctype="multipart/form-data">
+                                    <form action="{{route('registrar.Avance',$avance->id)}}" method="POST" file=true enctype="multipart/form-data">
                                             @csrf
                                         <div class="row clearfix">
                                            
@@ -257,23 +258,11 @@
 
 
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <!--<div class="col-lg-12 col-md-12 col-sm-12">
                                             <strong> Foto </strong>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                                                     <img id="newimg2" style="max-height: 200px;">
-                                                </div>
-                                                
-                                                    {{-- <input type="file" name="newimg" id="newimg" accept="image/*" /> --}}
-                                                    <div class="container-input">
-                                                        <input type="file"  name="newimg" id="newimg" accept="image/*" id="file-5" class="inputfile inputfile-5" data-multiple-caption="{count} archivos seleccionados"  />
-                                                        <label for="file-5">
-                                                        <figure>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
-                                                        </figure>
-                                                        <span class="iborrainputfile">Seleccionar archivo</span>
-                                                        </label>
-                                                        </div>
-                                            </div>
+                                               
                                         <br>
 
                                         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -291,18 +280,144 @@
 
                                                 </div>
                                                 
+                                            </div>-->
+                                        <br>
+
+                                        
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                        <img id="newimg" style="max-height: 200px;">
+                                            <strong> Foto 1 </strong>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                                                    <img id="newimg" style="max-height: 200px;">
+                                                </div>
+                                                
+                                                    {{-- <input type="file" name="newimg" id="newimg" accept="image/*" /> --}}
+                                                    <div class="container-input">
+                                                        <input type="file"  name="newimg" accept="image/*" id="file-5" class="inputfile inputfile-5" data-multiple-caption="{count} archivos seleccionados"  />
+                                                        <label for="file-5">
+                                                        <figure>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                                                        </figure>
+                                                        <span class="iborrainputfile">Seleccionar archivo</span>
+                                                        </label>
+                                                        </div>
                                             </div>
                                         <br>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                            <img id="newimg2" style="max-height: 200px;">
+                                                <strong> Foto 2 </strong>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                                                        <img id="newimg2" style="max-height: 200px;">
+                                                    </div>
+
+                                                        {{-- <input type="file" name="newimg2" id="newimg2" accept="image/*" /> --}}
+                                                        <div class="container-input">
+                                                            <input type="file"  name="newimg2" accept="image/*" id="file-2" class="inputfile inputfile-2" data-multiple-caption="{count} archivos seleccionados"  />
+                                                            <label for="file-2">
+                                                            <figure>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                                                            </figure>
+                                                            <span class="iborrainputfile">Seleccionar archivo</span>
+                                                            </label>
+                                                        </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                            <img id="newimg3" style="max-height: 200px;">
+                                                <strong> Foto 3 </strong>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                                                        <img id="newimg3" style="max-height: 200px;">
+                                                    </div>
+
+                                                        {{-- <input type="file" name="newimg3" id="newimg3" accept="image/*" /> --}}
+                                                        <div class="container-input">
+                                                            <input type="file"  name="newimg3" accept="image/*" id="file-3" class="inputfile inputfile-3" data-multiple-caption="{count} archivos seleccionados"  />
+                                                            <label for="file-3">
+                                                            <figure>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                                                            </figure>
+                                                            <span class="iborrainputfile">Seleccionar archivo</span>
+                                                            </label>
+                                                        </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                            <img id="newimg4" style="max-height: 200px;">
+                                                <strong> Foto 4 </strong>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                                                        <img id="newimg4" style="max-height: 200px;">
+                                                    </div>
+
+                                                        {{-- <input type="file" name="newimg4" id="newimg4" accept="image/*" /> --}}
+                                                        <div class="container-input">
+                                                            <input type="file"  name="newimg4" accept="image/*" id="file-4" class="inputfile inputfile-4" data-multiple-caption="{count} archivos seleccionados"  />
+                                                            <label for="file-4">
+                                                            <figure>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                                                            </figure>
+                                                            <span class="iborrainputfile">Seleccionar archivo</span>
+                                                            </label>
+                                                        </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                            <img id="newimg5" style="max-height: 200px;">
+                                                <strong> Foto 5 </strong>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                                                        <img id="newimg5" style="max-height: 200px;">
+                                                    </div>
+
+                                                        {{-- <input type="file" name="newimg5" id="newimg5" accept="image/*" /> --}}
+                                                        <div class="container-input">
+                                                            <input type="file"  name="newimg5" accept="image/*" id="file-6" class="inputfile inputfile-6" data-multiple-caption="{count} archivos seleccionados"  />
+                                                            <label for="file-6">
+                                                            <figure>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                                                            </figure>
+                                                            <span class="iborrainputfile">Seleccionar archivo</span>
+                                                            </label>
+                                                        </div>
+                                    </div>
+
+                                        <!--<div class="custom-file">
+                                          <input type="file" class="custom-file-input" name="newimg2" id="newimg2" accept="image/*">
+                                          <label class="custom-file-label" name="newimg2" for="customFile" accept="image/*" >escoja archivo</label>
+                                        </div>
+
+                                        <div class="custom-file">
+                                          <input type="file" class="custom-file-input" name="newimg3" id="newimg3" accept="image/*">
+                                          <label class="custom-file-label" name="newimg3" for="customFile" accept="image/*" >escoja archivo</label>
+                                        </div>
+
+                                        <div class="custom-file">
+                                          <input type="file" class="custom-file-input" name="newimg4" id="newimg4" accept="image/*">
+                                          <label class="custom-file-label" name="newimg4" for="customFile" accept="image/*" >escoja archivo</label>
+                                        </div>
+
+                                        <div class="custom-file">
+                                          <input type="file" class="custom-file-input" name="newimg5" id="newimg5" accept="image/*">
+                                          <label class="custom-file-label" name="newimg5" for="customFile" accept="image/*" >escoja archivo</label>
+                                        </div>-->
 
 
 
                                         <div class="form-line">
                                             <strong> concepto </strong>
-                                                 <input type="text" class="form-control" name="concepto" value="{{ old('concepto') }}" required="" placeholder="concepto ">
+                                                 <input type="text" class="form-control" name="concepto" value="{{ old('concepto') }}"  placeholder="concepto ">
                                         </div>
 
                                         
+                                        <!--<a type="button" class="btn btn-raised btn-default waves-effect" data-toggle="modal" data-target="#exampleModal">ver imagenes</a>
+-->
 
+                                        
                                        
                                         <div class="col-sm-12">
                                             <center>
@@ -330,7 +445,7 @@
 
 @endsection
 @section('scripts')
-
+<!--
 <script type="text/javascript">
 	(function() {
 
@@ -421,7 +536,7 @@
 
 })();
 
-</script>
+</script>-->
 
 
     <script src="{{asset('plugins/dropzone/dropzone.js')}}"></script>
@@ -493,6 +608,15 @@
             });
         });
     }( document, window, 0 ));
+
+    
+
+$custom-file-text: (
+  en: "Browse",
+  es: "Elegir"
+);
+
+
         </script>
     
 @endsection

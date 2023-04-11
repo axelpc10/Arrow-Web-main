@@ -91,7 +91,8 @@ Route::group(['middleware' => ['auth']], function (){
 
     Route::resource('contratosR',ContratosResponsableController::class);
 
-    Route::get('reporte/{id}/pdf',[ReporteController::class, 'imprimirpdf'])->name('reporte.imprimirpdf');
+    Route::get('reporte/{id}/img',[ReporteController::class, 'imprimirpdf'])->name('reporte.imprimirpdf');
+    Route::get('reporte/{id}/img2',[ReporteController::class, 'updateimg2'])->name('reporte.updateimg2');
     //Route::get('/avance/{id}/pdf',[AvanceController::class,'createPDF'])->name('avence.createPDF');
     //Route::get('verhombrod/{id}/ver',[AvanceController::class,'showd'])->name('hombrod.showd');
 

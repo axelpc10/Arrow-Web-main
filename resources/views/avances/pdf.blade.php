@@ -354,13 +354,58 @@
 
 
                                         <th class="text-center">
-                                          <?php
-                                           $path = public_path(); //Ruta absoluta
-                                           $pathImg = '/img/avance/'; //Ruta a sus imagenes
-                                           $img = $dato->newimg; //Imagen de DB
-                                           $finallyPath = $path.$pathImg.$img;//Ruta final de la imagen
-                                           echo '<img src="'.$finallyPath.'" class="card-img-top" width="100px"/>'
-                                          ?>
+
+                                            <div class="slider-container">  
+                                              <img
+                                                <?php
+                                                 $path = public_path(); //Ruta absoluta
+                                                 $pathImg = '/img/avance/'; //Ruta a sus imagenes
+                                                 $img = $dato->newimg; //Imagen de DB
+                                                 $finallyPath = $path.$pathImg.$img;//Ruta final de la imagen
+                                                 echo '<img src="'.$finallyPath.'" class="card-img-top" width="50px"'
+                                                ?>
+                                              />
+                                              <img
+                                                <?php
+                                                 $path = public_path(); //Ruta absoluta
+                                                 $pathImg = '/img/avance/'; //Ruta a sus imagenes
+                                                 $img = $dato->newimg2; //Imagen de DB
+                                                 $finallyPath = $path.$pathImg.$img;//Ruta final de la imagen
+                                                 echo '<img src="'.$finallyPath.'" class="card-img-top" width="50px"'
+                                                ?>
+                                              />
+                                            
+                                            <img
+                                                <?php
+                                                 $path = public_path(); //Ruta absoluta
+                                                 $pathImg = '/img/avance/'; //Ruta a sus imagenes
+                                                 $img = $dato->newimg3; //Imagen de DB
+                                                 $finallyPath = $path.$pathImg.$img;//Ruta final de la imagen
+                                                 echo '<img src="'.$finallyPath.'" class="card-img-top" width="50px"'
+                                                ?>
+                                              />
+                                            <img
+                                                <?php
+                                                 $path = public_path(); //Ruta absoluta
+                                                 $pathImg = '/img/avance/'; //Ruta a sus imagenes
+                                                 $img = $dato->newimg4; //Imagen de DB
+                                                 $finallyPath = $path.$pathImg.$img;//Ruta final de la imagen
+                                                 echo '<img src="'.$finallyPath.'" class="card-img-top" width="50px"'
+                                                ?>
+                                              />
+                                              <img
+                                                <?php
+                                                 $path = public_path(); //Ruta absoluta
+                                                 $pathImg = '/img/avance/'; //Ruta a sus imagenes
+                                                 $img = $dato->newimg5; //Imagen de DB
+                                                 $finallyPath = $path.$pathImg.$img;//Ruta final de la imagen
+                                                 echo '<img src="'.$finallyPath.'" class="card-img-top" width="50px"'
+                                                ?>
+                                              />
+                                              
+                                            </div>
+                                          
+                                          
                                           
                                         </th>
                                     
@@ -529,14 +574,58 @@
                                          <?php $est+=$total ?>
                                          @endif
 
-                                         <th class="text-center">
-                                          <?php
-                                           $path = public_path(); //Ruta absoluta
-                                           $pathImg = '/img/avance/'; //Ruta a sus imagenes
-                                           $img = $dato->newimg; //Imagen de DB
-                                           $finallyPath = $path.$pathImg.$img;//Ruta final de la imagen
-                                           echo '<img src="'.$finallyPath.'" class="card-img-top" width="100px"/>'
-                                          ?>
+                                        <th class="text-center">
+                                           <div class="slider-container">  
+                                                <img
+                                                  <?php
+                                                   $path2 = public_path(); //Ruta absoluta
+                                                   $pathImg2 = '/img/avance/'; //Ruta a sus imagenes
+                                                   $img2 = $dato->newimg; //Imagen de DB
+                                                   $finallyPath2 = $path2.$pathImg2.$img2;//Ruta final de la imagen
+                                                   echo '<img src="'.$finallyPath2.'" class="card-img-top" width="50px"'
+                                                  ?>
+                                                />
+
+                                                <img
+                                                  <?php
+                                                   $path2 = public_path(); //Ruta absoluta
+                                                   $pathImg2 = '/img/avance/'; //Ruta a sus imagenes
+                                                   $img2 = $dato->newimg2; //Imagen de DB
+                                                   $finallyPath2 = $path2.$pathImg2.$img2;//Ruta final de la imagen
+                                                   echo '<img src="'.$finallyPath2.'" class="card-img-top" width="50px"'
+                                                  ?>
+                                                />
+
+                                                <img
+                                                  <?php
+                                                   $path2 = public_path(); //Ruta absoluta
+                                                   $pathImg2 = '/img/avance/'; //Ruta a sus imagenes
+                                                   $img2 = $dato->newimg3; //Imagen de DB
+                                                   $finallyPath2 = $path2.$pathImg2.$img2;//Ruta final de la imagen
+                                                   echo '<img src="'.$finallyPath2.'" class="card-img-top" width="50px"'
+                                                  ?>
+                                                />
+
+                                                <img
+                                                  <?php
+                                                   $path2 = public_path(); //Ruta absoluta
+                                                   $pathImg2 = '/img/avance/'; //Ruta a sus imagenes
+                                                   $img2 = $dato->newimg4; //Imagen de DB
+                                                   $finallyPath2 = $path2.$pathImg2.$img2;//Ruta final de la imagen
+                                                   echo '<img src="'.$finallyPath2.'" class="card-img-top" width="50px"'
+                                                  ?>
+                                                />
+
+                                                <img
+                                                  <?php
+                                                   $path2 = public_path(); //Ruta absoluta
+                                                   $pathImg2 = '/img/avance/'; //Ruta a sus imagenes
+                                                   $img2 = $dato->newimg5; //Imagen de DB
+                                                   $finallyPath2 = $path2.$pathImg2.$img2;//Ruta final de la imagen
+                                                   echo '<img src="'.$finallyPath2.'" class="card-img-top" width="50px"'
+                                                  ?>
+                                                />
+                                          </div>
                                           
                                         </th>
                                  

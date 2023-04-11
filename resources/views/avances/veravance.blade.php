@@ -160,12 +160,42 @@
 
                                         <div class="col-md-6 m-auto">
                                                 <div class="form-group">
-                                                    <b>Imagen</b>
-                                                    <div class="text-center">
-                                                    <img src="{{asset('img/avance/'.$dato->newimg)}}" class="img-fluid mb-3 img-thumbnail" width="500px"><br>
-                                                    </div>
+                                            
+                                        
+
+
+                                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  
+                                            <div class="carousel-inner">
+                                              <div class="carousel-item active"> 
+                                                    <div class="form-line">
+                                                        <img src= "{{asset('img/avance/'.$dato->newimg)}}"class="img-fluid mb-3 img-thumbnail"  width="500px">
                                                 </div>
+                                              </div>
+                                              <div class="carousel-item">
+                                                <img src= "{{asset('img/avance/'.$dato->newimg2)}}"class="img-fluid mb-3 img-thumbnail" width="500px">
+                                              </div>
+                                              <div class="carousel-item">
+                                                <img src= "{{asset('img/avance/'.$dato->newimg3)}}"class="img-fluid mb-3 img-thumbnail" width="500px">
+                                              </div>
+                                              <div class="carousel-item">
+                                                <img src= "{{asset('img/avance/'.$dato->newimg4)}}"class="img-fluid mb-3 img-thumbnail" width="500px">
+                                              </div>
+                                              <div class="carousel-item">
+                                                <img src= "{{asset('img/avance/'.$dato->newimg5)}}"class="img-fluid mb-3 img-thumbnail" width="500px">
+                                              </div>
+                                            </div>
+                                            <a class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev" class="btn btn-warning">
+                                              <span class="carousel-control-prev-icon" aria-hidden="true" class="btn btn-warning" ></span>
+                                              <span class="sr-only" class="btn btn-warning"><</span>
+                                            </a>
+                                            <a class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                              <span class="sr-only">></span>
+                                            </a>
                                         </div>
+                                        </div>
+                                            </div>
 
 
                                         <div class="col-md-6 m-auto">

@@ -286,6 +286,66 @@ class AvanceController extends Controller
             $dato->newimg=$nombreImagen;
 
         }
+
+        if($request->hasFile("newimg2")){
+            
+            //Storage::delete('img/avance/'.$dato->newimg);
+            //File::delete(app_path().'/img/avance/'.$dato->newimg);
+            //$filedeleted = unlink(app_path().'img/avance/'.$dato->newimg);
+            File::delete(public_path('img/avance/'.$dato->newimg2));
+
+            $imagen=$request->file("newimg2");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg2=$nombreImagen;
+
+        }
+
+        if($request->hasFile("newimg3")){
+            
+            //Storage::delete('img/avance/'.$dato->newimg);
+            //File::delete(app_path().'/img/avance/'.$dato->newimg);
+            //$filedeleted = unlink(app_path().'img/avance/'.$dato->newimg);
+            File::delete(public_path('img/avance/'.$dato->newimg3));
+
+            $imagen=$request->file("newimg3");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg3=$nombreImagen;
+
+        }
+
+        if($request->hasFile("newimg4")){
+            
+            //Storage::delete('img/avance/'.$dato->newimg);
+            //File::delete(app_path().'/img/avance/'.$dato->newimg);
+            //$filedeleted = unlink(app_path().'img/avance/'.$dato->newimg);
+            File::delete(public_path('img/avance/'.$dato->newimg4));
+
+            $imagen=$request->file("newimg4");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg4=$nombreImagen;
+
+        }
+
+        if($request->hasFile("newimg5")){
+            
+            //Storage::delete('img/avance/'.$dato->newimg);
+            //File::delete(app_path().'/img/avance/'.$dato->newimg);
+            //$filedeleted = unlink(app_path().'img/avance/'.$dato->newimg);
+            File::delete(public_path('img/avance/'.$dato->newimg5));
+
+            $imagen=$request->file("newimg5");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg5=$nombreImagen;
+
+        }
         
         $avance=Avance::where('id','=',$dato->id_avance)->first();
         $dato->ancho1=$request->ancho1;
@@ -592,6 +652,42 @@ class AvanceController extends Controller
             $dato->newimg=$nombreImagen;
 
         }
+        
+        if($request->hasFile("newimg2")){
+            $imagen=$request->file("newimg2");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg2=$nombreImagen;
+
+        }
+
+        if($request->hasFile("newimg3")){
+            $imagen=$request->file("newimg3");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg3=$nombreImagen;
+
+        }
+
+        if($request->hasFile("newimg4")){
+            $imagen=$request->file("newimg4");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg4=$nombreImagen;
+
+        }
+
+        if($request->hasFile("newimg5")){
+            $imagen=$request->file("newimg5");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg5=$nombreImagen;
+
+        }
 
         $dato->save();
 
@@ -633,6 +729,42 @@ class AvanceController extends Controller
             $ruta=public_path("img/avance");
             $imagen->move($ruta,$nombreImagen);
             $dato->newimg=$nombreImagen;
+
+        }
+        
+        if($request->hasFile("newimg2")){
+            $imagen=$request->file("newimg2");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg2=$nombreImagen;
+
+        }
+
+        if($request->hasFile("newimg3")){
+            $imagen=$request->file("newimg3");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg3=$nombreImagen;
+
+        }
+
+        if($request->hasFile("newimg4")){
+            $imagen=$request->file("newimg4");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg4=$nombreImagen;
+
+        }
+
+        if($request->hasFile("newimg5")){
+            $imagen=$request->file("newimg5");
+            $nombreImagen=strtotime(now()).rand(11111,99999).'.'.$imagen->guessExtension();
+            $ruta=public_path("img/avance");
+            $imagen->move($ruta,$nombreImagen);
+            $dato->newimg5=$nombreImagen;
 
         }
 

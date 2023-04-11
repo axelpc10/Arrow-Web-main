@@ -2,7 +2,18 @@
 @section('estilos')
     <!-- JQuery DataTable Css -->
     <link href="{{asset('plugins/jquery-datatable/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <style>
 
+.slider-container {
+  scroll-snap-type: x mandatory;
+}
+
+.slider-container img {
+  scroll-snap-align: center;
+}
+
+
+      </style>
 @endsection
 @section('contenido')
 
@@ -33,7 +44,7 @@
                     <br>
                     <a href="{{route('Avance.show',$avance->id_concepto)}}" class="btn btn-raised btn-success m-auto" ><i class="material-icons">arrow_back</i></a>
                     <a class="btn btn-sm btn-raised btn-primary" href="{{ route('avence.createPDF',$avance->id) }}">Imprimir Reporte<i class="material-icons" style=" margin-bottom: 8px;">file_download</i> </a>
-                   
+                    
                     {{-- en el caso de que este amrcado la longitud --}}
                     @if ($l==1)
                     <a href="{{route('registrar.avance',$avance->id)}}"  class="m-auto btn btn-raised btn-warning m-auto">Hombro Derecho</a>   
@@ -347,11 +358,24 @@
 
 
 
-                                          <th class="text-center">
-                                          <img src="{{asset('img/avance/'.$dato->newimg)}}" class="img-fluid mb-3 img-thumbnail" width="100px"><br>
+                                    <th class="text-center">
+
+                                      <div class="slider-container"> 
+                                            
+                                        
 
 
-                                        </th>
+                                      <img src= "{{asset('img/avance/'.$dato->newimg)}}"class="img-fluid mb-3 img-thumbnail"  width="100px">
+                                              
+                                          <a data-path="{{route('reporte.imprimirpdf',$dato->id)}}" 
+                                           data-id="{{$dato->id}}"
+                                           class="btn btn-link  load-ajax-modal" 
+                                           role="button" 
+                                           data-toggle="modal" data-target="#dynamic-modal">
+                                           ver mas...
+                                        </a>
+                                        </div>
+                                    </th>
   
                                     
   
@@ -369,9 +393,23 @@
                                         
                                        </th>
                                        <th class="text-center  d-flex justify-content-around">
+                                       
                                         
-                                        <a class="btn btn-sm btn-raised btn-primary" href="{{ route('reporte.imprimirpdf',$dato->id) }}"><i class="zmdi zmdi-print" ></i> </a>
-                   
+                                        
+                                        
+                                        <!--<a type="button" class="btn btn-raised btn-default waves-effect" data-toggle="modal" data-target="#exampleModal">ver imagenes</a>
+<a class="btn btn-sm btn-raised btn-primary" href="{{ route('reporte.imprimirpdf',$dato->id) }}"><i class="zmdi zmdi-print" ></i> </a>
+                                        
+                                        
+                                        <a data-path="{{route('hombrod.showd',$dato->id)}}" 
+                                           data-id="{{$dato->id}}"
+                                           class="btn btn-raised btn-default waves-effect load-ajax-modal" 
+                                           role="button" 
+                                           data-toggle="modal" data-target="#dynamic-modal">
+                                           ver fotos
+                                        </a>-->
+                                        
+
                                         
                                        </th>
 
@@ -529,9 +567,18 @@
 
                                          <th class="text-center">
 
-                                         <img src="{{asset('img/avance/'.$dato->newimg)}}" class="img-fluid img-thumbnail" width="100px"><br>
-
-                                        </th>
+                                      <div class="slider-container"> 
+                                            
+                                        
+                                      <img src= "{{asset('img/avance/'.$dato->newimg)}}"class="img-fluid mb-3 img-thumbnail"  width="100px">
+                                        <a data-path="{{route('reporte.imprimirpdf',$dato->id)}}" 
+                                             data-id="{{$dato->id}}"
+                                             class="btn btn-link btn-default waves-effect load-ajax-modal" 
+                                             role="button" 
+                                             data-toggle="modal" data-target="#dynamic-modal">
+                                             ver mas...
+                                          </a>
+                                    </th>
                                  
                                     <th class="text-center  d-flex justify-content-around">
 
@@ -547,9 +594,6 @@
                                     </th>
                                     <th class="text-center  d-flex justify-content-around">
 
-                                    
-                                       <a class="btn btn-sm btn-raised btn-primary" href="{{ route('reporte.imprimirpdf',$dato->id) }}"><i class="zmdi zmdi-print" ></i> </a>
-                   
                                     </th>
                                     
                                     
@@ -884,6 +928,30 @@
 
 </div>
 
+@endsection
 
+@section('scripts')
+    
+
+    <script>
+
+    $('.load-ajax-modal').click(function(){
+
+$.ajax({
+    type : 'GET',
+    url : $(this).data('path'),
+    success: function(result) {
+        $('#dynamic-modal div.modal-body').html(result);
+        $('#dynamic-modal div.modal-body #leftsidebar').hide();
+        $('#dynamic-modal div.modal-body .navbar').hide();
+        $('#dynamic-modal div.modal-body .color-bg').hide();
+        $('#dynamic-modal div.modal-body .content').css("margin", "unset");
+        $('#dynamic-modal div.modal-body #boton').data( "modal",1);
+        $('#dynamic-modal div.modal-body #boton').data( "id",$(this).data('id'));
+    }
+});
+});
+
+    </script>
 @endsection
 

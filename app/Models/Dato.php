@@ -11,6 +11,10 @@ class Dato extends Model
         
         'newimg',
         'concepto',
+        'newimg2',
+        'newimg3',
+        'newimg4',
+        'newimg5',
         'hombro_derecho1',
         'hombro_derecho2', 
         'hombro_izquierdo1',
