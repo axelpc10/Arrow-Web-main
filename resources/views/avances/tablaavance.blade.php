@@ -58,22 +58,27 @@
                    
                 </div>
 
+
                 <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="dateInicio">Fecha incio</label>
-                      <input type="date" class="form-control" id="dateInicio" aria-describedby="dateInicio" placeholder="Ingresa una fecha">
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="dateFin">Fecha fin</label>
-                      <input type="date" class="form-control" id="dateFin" aria-describedby="dateFin" placeholder="Ingresa una fecha">
-                    </div>
-                  </div>
-                  <div class="col-md-4 d-flex justify-content-center align-items-end">
-                  <a class="btn btn-sm btn-raised btn-primary" href="{{ route('avence.createPDF', $avance->id) }}">Imprimir Reporte<i class="material-icons" style=" margin-bottom: 8px;">file_download</i> </a>
-                  </div>
+                  <form action="{{ route('avence.createPDF', $avance->id) }}" method="POST" file=true enctype="multipart/form-data">
+                    @csrf
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="dateInicio">Ingresa Fecha incio </label>
+                          <input type="date" id="myDate" name="bday" min="{{$fechainicio}}" max="2023-04-10">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="dateFin">Ingresa Fecha fin</label>
+                          <input type="date" id="dateFin" name="dateFin"  value="">  
+                        </div>
+                      </div>
+                      <div class="col-md-4 d-flex justify-content-center align-items-end">
+                      <button class="btn btn-sm btn-raised btn-primary" type="submit">Imprimir Reporte<i class="material-icons" style=" margin-bottom: 8px;">file_download</i> </button>
+                      </div>
+                      <button onclick="myFunction()">Try it</button>
+                  </form>
                 </div>
 
 
@@ -931,6 +936,20 @@
 @endsection
 
 @section('scripts')
+
+<script>
+function myFunction() {
+  var x = document.getElementById("dateInicio").max;
+  document.getElementById("demo").innerHTML = x;
+}
+</script>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myDate").max;
+  document.getElementById("demo").innerHTML = x;
+}
+</script>
     
 
     <script>

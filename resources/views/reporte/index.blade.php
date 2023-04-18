@@ -166,7 +166,7 @@
                                        
                                         <div class="col-sm-12">
                                             <center>
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <a href="{{ URL::previous() }}" class="btn btn-raised btn-default waves-effect">Cerrar</a>
                                             </center>
                                         </div>
         

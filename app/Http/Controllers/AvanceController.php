@@ -560,6 +560,7 @@ class AvanceController extends Controller
         $pie=$avance->pieza;
         $es=$avance->espesor;
         $are=$avance->area;
+        $fechainicio=date("2023-04-01");
 
         //avance
 
@@ -569,6 +570,9 @@ class AvanceController extends Controller
         $datosD=Dato::where('id_avance','=',$avance->id)
         ->where('hombro_derecho1','=',null)->where('hombro_derecho2','=',null)->whereNotNull('hombro_izquierdo1')
         ->whereNotNull('hombro_izquierdo2')->get();
+
+        $datosF=Dato::where('id_avance','=',$avance->id)
+        ->get();
 
         
         // si existen datos ya 
@@ -580,7 +584,7 @@ class AvanceController extends Controller
 
         // return $l;
 
-        return view('avances.tablaavance',compact('l','an','al','ap','vtt','are','pie','es','avance','datosG','datosD','concepto'));
+        return view('avances.tablaavance',compact('l','an','al','ap','vtt','are','pie','es','avance','datosG','datosD','concepto','fechainicio'));
     }
 
 
@@ -797,7 +801,7 @@ class AvanceController extends Controller
 
     }
 
-    public function createPDF($id)
+    public function createPDF($id, Request $request)
     {
      
     $avancef=Avance::find($id);
@@ -850,12 +854,20 @@ class AvanceController extends Controller
         $l=$avancef->localizacion;$an=$avancef->anchoM;$al=$avancef->altura;$ap=$avancef->anchoP;
         $vtt=$avancef->volumenT;$pie=$avancef->pieza;$es=$avancef->espesor;$are=$avancef->area;
 
+        //$from = date('2023-04-03');
+        //$to = date('2023-04-11');
+        $from = date("2023-04-03", strtotime($request->dateInicio));
+        $to = date("2023-04-11", strtotime($request->dateFin));
         $datosG=Dato::where('id_avance','=',$avancef->id)
-        ->where('hombro_izquierdo1','=',null)->where('hombro_izquierdo2','=',null)->get();
+        ->where('hombro_izquierdo1','=',null)->where('hombro_izquierdo2','=',null)
+        ->whereBetween('updated_at',[$from, $to])
+        ->get();
 
         $datosD=Dato::where('id_avance','=',$avancef->id)
         ->where('hombro_derecho1','=',null)->where('hombro_derecho2','=',null)->whereNotNull('hombro_izquierdo1')
-        ->whereNotNull('hombro_izquierdo2')->get();
+        ->whereNotNull('hombro_izquierdo2')
+        ->whereBetween('updated_at',[$from, $to])
+        ->get();
 
         $concepto=Concepto::where('id','=',$avancef->id_concepto)->first();
         //contrato
@@ -1242,6 +1254,12 @@ class AvanceController extends Controller
 
 
          return redirect()->route('Avance.show',$avance->id_concepto);
+    }
+
+    public function buscarfecha(){
+
+
+
     }
 
 /*
