@@ -119,26 +119,26 @@
                     $validacion=User::select('confirmed')->where('id','=',$id)->first();
 
                 @endphp
-                <li class="active open"><a href="/home"><i class="zmdi zmdi-home"></i><span>Inicio</span></a></li>
+                <li class="{{ request()->is('home') ? 'active open' : '' }}"><a href="/home"><i class="zmdi zmdi-home"></i><span>Inicio</span></a></li>
                 @if($validacion->confirmed==1)
                 @if ($rol->name=="Tenant")
                 {{-- tenant --}}
-                <li><a href="/roles"><i class="zmdi zmdi-calendar-check"></i><span>Roles</span> </a></li>
-                <li><a href="/usuarios"><i class="zmdi zmdi-account"></i><span>Usuarios</span> </a></li>
-                <li><a href="/empresas"><i class="material-icons">business</i><span>Empresas</span> </a></li>
+                <li class="{{ request()->is('roles') ? 'active open' : '' }}"><a href="/roles"><i class="zmdi zmdi-calendar-check"></i><span>Roles</span> </a></li>
+                <li class="{{ request()->is('usuarios') ? 'active open' : '' }}"><a href="/usuarios"><i class="zmdi zmdi-account"></i><span>Usuarios</span> </a></li>
+                <li class="{{ request()->is('empresas') ? 'active open' : '' }}"><a href="/empresas"><i class="material-icons">business</i><span>Empresas</span> </a></li>
                 @elseif ($rol->name=="Responsable de empresa")
 
                 {{-- Responsable de empresa --}}
-                <li><a href="/operativos"><i class="zmdi zmdi-account"></i><span>Usuarios-Operativo</span> </a></li>
-                <li><a href="/afianzadoras"><i class="material-icons">next_week</i><span>Afianzadoras</span> </a></li>
-                <li><a href="/clientes"><i class="material-icons">supervisor_account</i><span>Clientes</span> </a></li>
-                <li><a href="/empleados"><i class="material-icons">build</i><span>Empleados</span> </a></li>
-                <li><a href="/contratos"> <i class="material-icons">assignment</i><span>Contratos</span> </a></li>
-               {{-- <li><a  href="/contratosR"> <i class="material-icons">assignment</i><span>Contratos-Asignados</span> </a></li> --}}
+                <li class="{{ request()->is('operativos') ? 'active open' : '' }}"><a href="/operativos"><i class="zmdi zmdi-account"></i><span>Usuarios-Operativo</span> </a></li>
+                <li class="{{ request()->is('afianzadoras') ? 'active open' : '' }}"><a href="/afianzadoras"><i class="material-icons">next_week</i><span>Afianzadoras</span> </a></li>
+                <li class="{{ request()->is('clientes') ? 'active open' : '' }}"><a href="/clientes"><i class="material-icons">supervisor_account</i><span>Clientes</span> </a></li>
+                <li class="{{ request()->is('empleados') ? 'active open' : '' }}"><a href="/empleados"><i class="material-icons">build</i><span>Empleados</span> </a></li>
+                <li class="{{ request()->is('contratos') ? 'active open' : '' }}"><a href="/contratos"> <i class="material-icons">assignment</i><span>Contratos</span> </a></li>
+               {{-- <li class="{{ request()->is('contratosR') ? 'active open' : '' }}"><a  href="/contratosR"> <i class="material-icons">assignment</i><span>Contratos-Asignados</span> </a></li> --}}
                
-                <li><a  href="/unidades"> <i class="material-icons">format_shapes</i> <span class="icon-name">Unidades</span> </a></li>
-                <li><a  href="/cargos"> <i class="material-icons">business_center</i> <span class="icon-name">Cargos</span> </a></li>
-                <li><a  href="/asignarcargo"> <i class="material-icons">assignment_ind</i><span>Asignar cargo</span> </a></li>
+                <li class="{{ request()->is('unidades') ? 'active open' : '' }}"><a  href="/unidades"> <i class="material-icons">format_shapes</i> <span class="icon-name">Unidades</span> </a></li>
+                <li class="{{ request()->is('cargos') ? 'active open' : '' }}"><a  href="/cargos"> <i class="material-icons">business_center</i> <span class="icon-name">Cargos</span> </a></li>
+                <li class="{{ request()->is('asignarcargo') ? 'active open' : '' }}"><a  href="/asignarcargo"> <i class="material-icons">assignment_ind</i><span>Asignar cargo</span> </a></li>
                 <!-- se quita firmantes de menu para pasarlo como boton en la parte de contrato 
                     <li><a  href="/firmantes"> <i class="material-icons">border_color</i> <span class="icon-name">Firmantes</span> </a></li>-->
             
@@ -146,14 +146,14 @@
 
                 {{-- Responsable de empresa --}}
 
-                <li><a href="/contratosR"> <i class="material-icons">assignment</i><span>Contratos-Asignados</span> </a></li>
-                {{--<li><a  href="/unidades"> <i class="material-icons">format_shapes</i> <span class="icon-name">Unidades</span> </a></li>--}}
+                <li class="{{ request()->is('contratosR') ? 'active open' : '' }}"><a href="/contratosR"> <i class="material-icons">assignment</i><span>Contratos-Asignados</span> </a></li>
+                {{--<li class="{{ request()->is('unidades') ? 'active open' : '' }}"><a  href="/unidades"> <i class="material-icons">format_shapes</i> <span class="icon-name">Unidades</span> </a></li>--}}
 
                 @elseif ($rol->name="Asistente de obra")
 
                 {{-- Asistente de obra --}}
 
-                <li><a href="/contratosR"> <i class="material-icons">assignment</i><span>Contratos-Asignados</span> </a></li>
+                <li class="{{ request()->is('contratosR') ? 'active open' : '' }}"><a href="/contratosR"> <i class="material-icons">assignment</i><span>Contratos-Asignados</span> </a></li>
                 
                 @endif
                 
@@ -171,7 +171,7 @@
 <!--Side menu and right menu -->
 
 <!-- main content -->
-<section class="content home">
+<section class="content home" style= "position: relative; top: 100px; border: 3px solid #d86008; margin-right: 5px;">
     @yield('contenido')
 
 

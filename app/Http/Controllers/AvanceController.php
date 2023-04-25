@@ -544,7 +544,8 @@ class AvanceController extends Controller
      
     }
 
-    public function veravance($id){
+    public function veravance($id, Request $request){
+
 
         $avance=Avance::find($id);
         $concepto=Concepto::where('id','=',$avance->id_concepto)->first();
@@ -563,16 +564,38 @@ class AvanceController extends Controller
         $fechainicio=date("2023-04-01");
 
         //avance
+        $consultaFecha=true;
 
-        $datosG=Dato::where('id_avance','=',$avance->id)
+        if($request->bday && $request->dateFin){
+            $consultaFecha=false;
+        }
+
+        
+
+        if($consultaFecha){
+            $datosG=Dato::where('id_avance','=',$avance->id)
         ->where('hombro_izquierdo1','=',null)->where('hombro_izquierdo2','=',null)->get();
 
         $datosD=Dato::where('id_avance','=',$avance->id)
         ->where('hombro_derecho1','=',null)->where('hombro_derecho2','=',null)->whereNotNull('hombro_izquierdo1')
         ->whereNotNull('hombro_izquierdo2')->get();
-
-        $datosF=Dato::where('id_avance','=',$avance->id)
+        }
+        else{
+            $datosG=Dato::where('id_avance','=',$avance->id)
+        ->where('hombro_izquierdo1','=',null)->where('hombro_izquierdo2','=',null)
+        ->whereBetween('updated_at',[$request->bday, $request->dateFin])
         ->get();
+
+        $datosD=Dato::where('id_avance','=',$avance->id)
+        ->where('hombro_derecho1','=',null)->where('hombro_derecho2','=',null)->whereNotNull('hombro_izquierdo1')
+        ->whereNotNull('hombro_izquierdo2')
+        ->whereBetween('updated_at',[$request->bday, $request->dateFin])
+        ->get();
+        }
+        
+
+        //$datosF=Dato::where('id_avance','=',$avance->id)
+        //->get();
 
         
         // si existen datos ya 
@@ -584,7 +607,7 @@ class AvanceController extends Controller
 
         // return $l;
 
-        return view('avances.tablaavance',compact('l','an','al','ap','vtt','are','pie','es','avance','datosG','datosD','concepto','fechainicio'));
+        return view('avances.tablaavance',compact('l','an','al','ap','vtt','are','pie','es','avance','datosG','datosD','concepto','fechainicio','request'));
     }
 
 
@@ -803,6 +826,7 @@ class AvanceController extends Controller
 
     public function createPDF($id, Request $request)
     {
+        
      
     $avancef=Avance::find($id);
 
@@ -854,19 +878,19 @@ class AvanceController extends Controller
         $l=$avancef->localizacion;$an=$avancef->anchoM;$al=$avancef->altura;$ap=$avancef->anchoP;
         $vtt=$avancef->volumenT;$pie=$avancef->pieza;$es=$avancef->espesor;$are=$avancef->area;
 
-        //$from = date('2023-04-03');
-        //$to = date('2023-04-11');
-        $from = date("2023-04-03", strtotime($request->dateInicio));
-        $to = date("2023-04-11", strtotime($request->dateFin));
+        $from = date('2023-04-03');
+        $to = date('2023-04-11');
+        // $from = date("yyyy-mm-dd", strtotime($request->bday ));
+        // $to = date("yyyy-mm-dd", strtotime($request->dateFin));
         $datosG=Dato::where('id_avance','=',$avancef->id)
         ->where('hombro_izquierdo1','=',null)->where('hombro_izquierdo2','=',null)
-        ->whereBetween('updated_at',[$from, $to])
+         ->whereBetween('updated_at',[$from, $to])
         ->get();
 
         $datosD=Dato::where('id_avance','=',$avancef->id)
         ->where('hombro_derecho1','=',null)->where('hombro_derecho2','=',null)->whereNotNull('hombro_izquierdo1')
         ->whereNotNull('hombro_izquierdo2')
-        ->whereBetween('updated_at',[$from, $to])
+         ->whereBetween('updated_at',[$from, $to])
         ->get();
 
         $concepto=Concepto::where('id','=',$avancef->id_concepto)->first();

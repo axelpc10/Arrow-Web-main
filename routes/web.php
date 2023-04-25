@@ -131,6 +131,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('agregarf/{id}/opciones',[AvanceController::class,'agregaropc'])->name('registrar.datos');
     Route::post('agregarop/{id}/guardar',[AvanceController::class,'guardaropc'])->name('guardar.opc');
     Route::get('avancet/{id}/ver',[AvanceController::class,'veravance'])->name('ver.avance');
+    Route::post('avancet/{id}/ver',[AvanceController::class,'veravance'])->name('ver.avanceFecha');
 
     Route::get('avancet/{id}/ver/fecha',[AvanceController::class,'buscarfecha'])->name('ver.buscarfecha');
 
@@ -145,7 +146,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('verhombrod/{id}/ver',[AvanceController::class,'showd'])->name('hombrod.showd');
     Route::get('verhombroI/{id}/verI',[AvanceController::class,'showi'])->name('hombroI.showi');
 
-    Route::post('/avance/{id}/pdf',[AvanceController::class,'createPDF'])->name('avence.createPDF');
+    Route::get('/avance/{id}/pdf/request',[AvanceController::class,'createPDF'])->name('avence.createPDF');
     Route::get('/concepto/{id}/pdf',[AvanceController::class,'create2PDF'])->name('concepto.createPDF');
 
     Route::get('avances/{id}/imagen',[AvanceController::class,'agregarimagenubi'])->name('avances.agregarimagenubi');

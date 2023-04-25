@@ -43,7 +43,7 @@
                     <h2 class="text-center">Datos del avance</h2>
                     <br>
                     <a href="{{route('Avance.show',$avance->id_concepto)}}" class="btn btn-raised btn-success m-auto" ><i class="material-icons">arrow_back</i></a>
-                    <a class="btn btn-sm btn-raised btn-primary" href="{{ route('avence.createPDF',$avance->id) }}">Imprimir Reporte<i class="material-icons" style=" margin-bottom: 8px;">file_download</i> </a>
+                    <a class="btn btn-sm btn-raised btn-primary" href="{{ route('avence.createPDF',$avance->id,$request) }}">Imprimir Reporte<i class="material-icons" style=" margin-bottom: 8px;">file_download</i> </a>
                     
                     {{-- en el caso de que este amrcado la longitud --}}
                     @if ($l==1)
@@ -55,31 +55,32 @@
                     <a href="{{route('registrar.avance',$avance->id)}}"  class="m-auto btn btn-raised btn-warning m-auto">Registrar avance</a><br><br>
                     @endif
 
-                   
-                </div>
-
-
-                <div class="row">
-                  <form action="{{ route('avence.createPDF', $avance->id) }}" method="POST" file=true enctype="multipart/form-data">
+                    <div class="row">
+                  <form action="{{ route('ver.avanceFecha', $avance->id) }}" method="POST" file=true enctype="multipart/form-data">
                     @csrf
                       <div class="col-md-4">
                         <div class="form-group">
                           <label for="dateInicio">Ingresa Fecha incio </label>
-                          <input type="date" id="myDate" name="bday" min="{{$fechainicio}}" max="2023-04-10">
+                          <input type="date" id="myDate" name="bday">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label for="dateFin">Ingresa Fecha fin</label>
-                          <input type="date" id="dateFin" name="dateFin"  value="">  
+                          <input type="date" id="dateFin" name="dateFin">  
                         </div>
                       </div>
                       <div class="col-md-4 d-flex justify-content-center align-items-end">
-                      <button class="btn btn-sm btn-raised btn-primary" type="submit">Imprimir Reporte<i class="material-icons" style=" margin-bottom: 8px;">file_download</i> </button>
+                      <button class="btn btn-sm btn-raised btn-primary" style="float:right;" type="submit">Imprimir Reporte<i class="material-icons" style=" margin-bottom: 8px;">file_download</i> </button>
                       </div>
-                      <button onclick="myFunction()">Try it</button>
                   </form>
                 </div>
+
+                   
+                </div>
+
+
+              
 
 
                 
